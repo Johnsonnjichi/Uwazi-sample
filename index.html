@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Group Challenge Tracker</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .group-card {
+            border-left: 5px solid;
+            transition: transform 0.2s;
+        }
+        .group-card:hover {
+            transform: translateY(-5px);
+        }
+        .green-group { border-color: #28a745; }
+        .red-group { border-color: #dc3545; }
+        .yellow-group { border-color: #ffc107; }
+        .purple-group { border-color: #6f42c1; }
+        .orange-group { border-color: #fd7e14; }
+        .blue-group { border-color: #0d6efd; }
+        
+        .tab-pane {
+            padding: 20px 0;
+        }
+        
+        .form-section {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        #reportSection {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Student Group Challenge Tracker</h1>
+        
+        <!-- Navigation Tabs -->
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="students-tab" data-bs-toggle="tab" data-bs-target="#students" type="button" role="tab" aria-controls="students" aria-selected="true">
+                    <i class="fas fa-user-graduate me-2"></i>Students
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="groups-tab" data-bs-toggle="tab" data-bs-target="#groups" type="button" role="tab" aria-controls="groups" aria-selected="false">
+                    <i class="fas fa-users me-2"></i>Groups
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="challenges-tab" data-bs-toggle="tab" data-bs-target="#challenges" type="button" role="tab" aria-controls="challenges" aria-selected="false">
+                    <i class="fas fa-tasks me-2"></i>Challenges
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="solutions-tab" data-bs-toggle="tab" data-bs-target="#solutions" type="button" role="tab" aria-controls="solutions" aria-selected="false">
+                    <i class="fas fa-lightbulb me-2"></i>Solutions
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reports-tab" data-bs-toggle="tab" data-bs-target="#reports" type="button" role="tab" aria-controls="reports" aria-selected="false">
+                    <i class="fas fa-chart-bar me-2"></i>Reports
+                </button>
+            </li>
+        </ul>
+        
+        <!-- Tab Content -->
+        <div class="tab-content" id="myTabContent">
+            <!-- Students Tab -->
+            <div class="tab-pane fade show active" id="students" role="tabpanel" aria-labelledby="students-tab">
+                <div class="form-section">
+                    <h3>Add Students</h3>
+                    <ul class="nav nav-tabs mb-3" id="studentInputTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="bulk-tab" data-bs-toggle="tab" data-bs-target="#bulk-input" type="button" role="tab" aria-controls="bulk-input" aria-selected="true">Bulk Import</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="individual-tab" data-bs-toggle="tab" data-bs-target="#individual-input" type="button" role="tab" aria-controls="individual-input" aria-selected="false">Individual Input</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="studentInputTabsContent">
+                        <!-- Bulk Import Tab -->
+                        <div class="tab-pane fade show active" id="bulk-input" role="tabpanel" aria-labelledby="bulk-tab">
+                            <div class="card mb-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0">Bulk Student Import</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="bulkStudentData" class="form-label">Paste Student Data</label>
+                                        <p class="text-muted small">Format: One student per line. Format each line as: <b>Name, Admission Number, Class</b> (e.g., "John Doe, A12345, Form 4A")</p>
+                                        <textarea class="form-control" id="bulkStudentData" rows="8" placeholder="John Doe, ADM001, Form 4A&#10;Jane Smith, ADM002, Form 4B&#10;..."></textarea>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label d-block">Grouping Method</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="groupingMethod" id="autoGrouping" value="auto" checked>
+                                            <label class="form-check-label" for="autoGrouping">Automatic (Balanced)</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="groupingMethod" id="manualGrouping" value="manual">
+                                            <label class="form-check-label" for="manualGrouping">Manual</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="manualGroupingOptions" class="mb-3 d-none">
+                                        <label class="form-label">Select a criteria for sorting into groups</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="manualGroupCriteria" id="byClass" value="class" checked>
+                                            <label class="form-check-label" for="byClass">By Class</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="manualGroupCriteria" id="byAdmissionPattern" value="admission">
+                                            <label class="form-check-label" for="byAdmissionPattern">By Admission Number Pattern</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-end">
+                                        <button type="button" class="btn btn-primary" id="processStudentsBtn">Process Students</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="groupPreview" class="d-none">
+                                <h5 class="mb-3">Group Assignment Preview</h5>
+                                <div class="table-responsive mb-3">
+                                    <table class="table table-sm table-bordered" id="groupAssignmentTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Admission Number</th>
+                                                <th>Class</th>
+                                                <th>Assigned Group</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Group assignments will appear here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-success" id="confirmGroupsBtn">Confirm Grouping</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Individual Input Tab -->
+                        <div class="tab-pane fade" id="individual-input" role="tabpanel" aria-labelledby="individual-tab">
+                            <form id="studentForm">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label for="studentName" class="form-label">Student Name</label>
+                                        <input type="text" class="form-control" id="studentName" placeholder="Enter student full name">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="admissionNumber" class="form-label">Admission Number</label>
+                                        <input type="text" class="form-control" id="admissionNumber" placeholder="e.g., ADM001">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="studentClass" class="form-label">Class</label>
+                                        <input type="text" class="form-control" id="studentClass" placeholder="e.g., Form 4A">
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-1">
+                                    <div class="col-md-4">
+                                        <label for="studentGroup" class="form-label">Assign to Group</label>
+                                        <select class="form-select" id="studentGroup">
+                                            <option selected disabled>Select a group</option>
+                                            <option value="Green">Green (Sophie)</option>
+                                            <option value="Red">Red (Waka)</option>
+                                            <option value="Yellow">Yellow (Frank)</option>
+                                            <option value="Purple">Purple (Ng'ang'a)</option>
+                                            <option value="Orange">Orange (Jenny)</option>
+                                            <option value="Blue">Blue (Joan)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-8 d-flex align-items-end">
+                                        <button type="button" class="btn btn-primary" id="addStudentBtn">Add Student</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h4>Student List</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="studentTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Admission Number</th>
+                                        <th>Class</th>
+                                        <th>Group</th>
+                                        <th>CSE (Instructor)</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Student data will be added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Groups Tab -->
+            <div class="tab-pane fade" id="groups" role="tabpanel" aria-labelledby="groups-tab">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <!-- Green Group -->
+                    <div class="col">
+                        <div class="card h-100 group-card green-group">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="card-title mb-0">Green Group</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">CSE: Sophie</h6>
+                                <p class="card-text">Student Members:</p>
+                                <ul class="list-group" id="greenGroupMembers">
+                                    <!-- Members will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Red Group -->
+                    <div class="col">
+                        <div class="card h-100 group-card red-group">
+                            <div class="card-header bg-danger text-white">
+                                <h5 class="card-title mb-0">Red Group</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">CSE: Waka</h6>
+                                <p class="card-text">Student Members:</p>
+                                <ul class="list-group" id="redGroupMembers">
+                                    <!-- Members will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Yellow Group -->
+                    <div class="col">
+                        <div class="card h-100 group-card yellow-group">
+                            <div class="card-header bg-warning">
+                                <h5 class="card-title mb-0">Yellow Group</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">CSE: Frank</h6>
+                                <p class="card-text">Student Members:</p>
+                                <ul class="list-group" id="yellowGroupMembers">
+                                    <!-- Members will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Purple Group -->
+                    <div class="col">
+                        <div class="card h-100 group-card purple-group">
+                            <div class="card-header" style="background-color: #6f42c1; color: white;">
+                                <h5 class="card-title mb-0">Purple Group</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">CSE: Ng'ang'a</h6>
+                                <p class="card-text">Student Members:</p>
+                                <ul class="list-group" id="purpleGroupMembers">
+                                    <!-- Members will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Orange Group -->
+                    <div class="col">
+                        <div class="card h-100 group-card orange-group">
+                            <div class="card-header" style="background-color: #fd7e14; color: white;">
+                                <h5 class="card-title mb-0">Orange Group</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">CSE: Jenny</h6>
+                                <p class="card-text">Student Members:</p>
+                                <ul class="list-group" id="orangeGroupMembers">
+                                    <!-- Members will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Blue Group -->
+                    <div class="col">
+                        <div class="card h-100 group-card blue-group">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="card-title mb-0">Blue Group</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">CSE: Joan</h6>
+                                <p class="card-text">Student Members:</p>
+                                <ul class="list-group" id="blueGroupMembers">
+                                    <!-- Members will be populated here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenges Tab -->
+            <div class="tab-pane fade" id="challenges" role="tabpanel" aria-labelledby="challenges-tab">
+                <div class="form-section">
+                    <h3>Assign Challenges to Groups</h3>
+                    <form id="challengeForm">
+                        <div class="mb-3">
+                            <label for="challengeGroup" class="form-label">Select Group</label>
+                            <select class="form-select" id="challengeGroup">
+                                <option selected disabled>Select a group</option>
+                                <option value="Green">Green (Sophie)</option>
+                                <option value="Red">Red (Waka)</option>
+                                <option value="Yellow">Yellow (Frank)</option>
+                                <option value="Purple">Purple (Ng'ang'a)</option>
+                                <option value="Orange">Orange (Jenny)</option>
+                                <option value="Blue">Blue (Joan)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="challengeDescription" class="form-label">Challenge Description</label>
+                            <textarea class="form-control" id="challengeDescription" rows="3" placeholder="Describe the challenge for this group"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="assignChallengeBtn">Assign Challenge</button>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <h4>Group Challenges</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="challengeTable">
+                                <thead>
+                                    <tr>
+                                        <th>Group</th>
+                                        <th>CSE</th>
+                                        <th>Challenge</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Challenge data will be added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Solutions Tab -->
+            <div class="tab-pane fade" id="solutions" role="tabpanel" aria-labelledby="solutions-tab">
+                <div class="form-section">
+                    <h3>Record Group Solutions</h3>
+                    <form id="solutionForm">
+                        <div class="mb-3">
+                            <label for="solutionGroup" class="form-label">Select Group</label>
+                            <select class="form-select" id="solutionGroup">
+                                <option selected disabled>Select a group</option>
+                                <option value="Green">Green (Sophie)</option>
+                                <option value="Red">Red (Waka)</option>
+                                <option value="Yellow">Yellow (Frank)</option>
+                                <option value="Purple">Purple (Ng'ang'a)</option>
+                                <option value="Orange">Orange (Jenny)</option>
+                                <option value="Blue">Blue (Joan)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="solutionDescription" class="form-label">Solution Description</label>
+                            <textarea class="form-control" id="solutionDescription" rows="5" placeholder="Describe the solution provided by this group"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="solutionScore" class="form-label">Score (1-10)</label>
+                            <input type="number" class="form-control" id="solutionScore" min="1" max="10" placeholder="Rate the solution from 1 to 10">
+                        </div>
+                        <button type="button" class="btn btn-primary" id="recordSolutionBtn">Record Solution</button>
+                    </form>
+                    
+                    <div class="mt-4">
+                        <h4>Group Solutions</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="solutionTable">
+                                <thead>
+                                    <tr>
+                                        <th>Group</th>
+                                        <th>CSE</th>
+                                        <th>Challenge</th>
+                                        <th>Solution</th>
+                                        <th>Score</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Solution data will be added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reports Tab -->
+            <div class="tab-pane fade" id="reports" role="tabpanel" aria-labelledby="reports-tab">
+                <div class="form-section" id="reportSection">
+                    <h3 class="mb-4">Sample Uwazi Report</h3>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Group Performance</h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="groupScoreChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Students per Group</h5>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="studentsPerGroupChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Group Challenges Summary</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" id="reportChallengeTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Group</th>
+                                                    <th>CSE</th>
+                                                    <th>Challenge</th>
+                                                    <th>Score</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Report data will be generated here -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <button class="btn btn-success btn-lg" id="downloadReportBtn">
+                            <i class="fas fa-download me-2"></i>Download Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script>
+        // JSON Server API endpoints
+        const API_BASE_URL = 'http://localhost:3000';
+        const STUDENTS_ENDPOINT = `${API_BASE_URL}/students`;
+        const CHALLENGES_ENDPOINT = `${API_BASE_URL}/challenges`;
+        const SOLUTIONS_ENDPOINT = `${API_BASE_URL}/solutions`;
+        
+        // Store students, challenges, and solutions
+        let students = [];
+        let challenges = [];
+        let solutions = [];
+        
+        // Store temporary student data for preview
+        let tempStudentData = [];
+        
+        // CSE for each group
+        const cseMap = {
+            'Green': 'Sophie',
+            'Red': 'Waka',
+            'Yellow': 'Frank',
+            'Purple': 'Ng\'ang\'a',
+            'Orange': 'Jenny',
+            'Blue': 'Joan'
+        };
+        
+        // Group colors for charts
+        const groupColors = {
+            'Green': '#28a745',
+            'Red': '#dc3545',
+            'Yellow': '#ffc107',
+            'Purple': '#6f42c1',
+            'Orange': '#fd7e14',
+            'Blue': '#0d6efd'
+        };
+        
+        // All groups array for easier iteration
+        const allGroups = Object.keys(cseMap);
+        
+        // Initialize charts
+        let groupScoreChart, studentsPerGroupChart;
+        
+        // Helper function for API calls
+        async function fetchData(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok');
+                return await response.json();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return [];
+            }
+        }
+        
+        async function postData(url, data) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                if (!response.ok) throw new Error('Network response was not ok');
+                return await response.json();
+            } catch (error) {
+                console.error('Error posting data:', error);
+                return null;
+            }
+        }
+        
+        async function deleteData(url) {
+            try {
+                const response = await fetch(url, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) throw new Error('Network response was not ok');
+                return true;
+            } catch (error) {
+                console.error('Error deleting data:', error);
+                return false;
+            }
+        }
+        
+        // Load all data when page loads
+        async function loadAllData() {
+            students = await fetchData(STUDENTS_ENDPOINT);
+            challenges = await fetchData(CHALLENGES_ENDPOINT);
+            solutions = await fetchData(SOLUTIONS_ENDPOINT);
+            
+            updateStudentTable();
+            updateGroupMembers();
+            updateChallengeTable();
+            updateSolutionTable();
+            updateReportTable();
+            updateCharts();
+        }
+        
+        // DOM ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load all data from JSON server
+            loadAllData();
+            
+            // Toggle manual grouping options
+            document.querySelectorAll('input[name="groupingMethod"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'manual') {
+                        document.getElementById('manualGroupingOptions').classList.remove('d-none');
+                    } else {
+                        document.getElementById('manualGroupingOptions').classList.add('d-none');
+                    }
+                });
+            });
+            
+            // Process students from bulk input
+            document.getElementById('processStudentsBtn').addEventListener('click', function() {
+                const bulkData = document.getElementById('bulkStudentData').value.trim();
+                
+                if (!bulkData) {
+                    alert('Please enter student data');
+                    return;
+                }
+                
+                // Clear previous temp data
+                tempStudentData = [];
+                
+                // Parse input data
+                const lines = bulkData.split('\n');
+                for (const line of lines) {
+                    const parts = line.split(',').map(part => part.trim());
+                    
+                    if (parts.length >= 3) {
+                        tempStudentData.push({
+                            id: Date.now() + Math.floor(Math.random() * 1000),
+                            name: parts[0],
+                            admissionNumber: parts[1],
+                            class: parts[2],
+                            group: '' // To be assigned
+                        });
+                    }
+                }
+                
+                if (tempStudentData.length === 0) {
+                    alert('No valid student data found. Please check the format.');
+                    return;
+                }
+                
+                // Assign groups based on selected method
+                const groupingMethod = document.querySelector('input[name="groupingMethod"]:checked').value;
+                
+                if (groupingMethod === 'auto') {
+                    // Automatic balanced grouping
+                    assignGroupsAutomatically();
+                } else {
+                    // Manual grouping based on criteria
+                    const criteria = document.querySelector('input[name="manualGroupCriteria"]:checked').value;
+                    assignGroupsManually(criteria);
+                }
+                
+                // Show preview
+                updateGroupAssignmentTable();
+                document.getElementById('groupPreview').classList.remove('d-none');
+            });
+            
+            // Confirm grouping button
+            document.getElementById('confirmGroupsBtn').addEventListener('click', async function() {
+                // Add all temp students to the JSON server
+                for (const tempStudent of tempStudentData) {
+                    const student = {
+                        ...tempStudent,
+                        cse: cseMap[tempStudent.group]
+                    };
+                    
+                    await postData(STUDENTS_ENDPOINT, student);
+                }
+                
+                // Reload data from server
+                await loadAllData();
+                
+                // Clear and hide preview
+                tempStudentData = [];
+                document.getElementById('bulkStudentData').value = '';
+                document.getElementById('groupPreview').classList.add('d-none');
+            });
+            
+            // Add individual student button
+            document.getElementById('addStudentBtn').addEventListener('click', async function() {
+                const name = document.getElementById('studentName').value.trim();
+                const admissionNumber = document.getElementById('admissionNumber').value.trim();
+                const studentClass = document.getElementById('studentClass').value.trim();
+                const group = document.getElementById('studentGroup').value;
+                
+                if (name && admissionNumber && studentClass && group) {
+                    // Create student object
+                    const student = {
+                        name: name,
+                        admissionNumber: admissionNumber,
+                        class: studentClass,
+                        group: group,
+                        cse: cseMap[group]
+                    };
+                    
+                    // Add to server
+                    await postData(STUDENTS_ENDPOINT, student);
+                    
+                    // Reload data
+                    await loadAllData();
+                    
+                    // Clear form
+                    document.getElementById('studentName').value = '';
+                    document.getElementById('admissionNumber').value = '';
+                    document.getElementById('studentClass').value = '';
+                    document.getElementById('studentGroup').selectedIndex = 0;
+                } else {
+                    alert('Please fill in all student information');
+                }
+            });
+            
+            // Assign challenge button
+            document.getElementById('assignChallengeBtn').addEventListener('click', async function() {
+                const group = document.getElementById('challengeGroup').value;
+                const description = document.getElementById('challengeDescription').value.trim();
+                
+                if (group && description) {
+                    // Create challenge object
+                    const challenge = {
+                        group: group,
+                        cse: cseMap[group],
+                        description: description
+                    };
+                    
+                    // Add to server
+                    await postData(CHALLENGES_ENDPOINT, challenge);
+                    
+                    // Reload data
+                    await loadAllData();
+                    
+                    // Clear form
+                    document.getElementById('challengeGroup').selectedIndex = 0;
+                    document.getElementById('challengeDescription').value = '';
+                } else {
+                    alert('Please select a group and enter a challenge description');
+                }
+            });
+            
+            // Record solution button
+            document.getElementById('recordSolutionBtn').addEventListener('click', async function() {
+                const group = document.getElementById('solutionGroup').value;
+                const description = document.getElementById('solutionDescription').value.trim();
+                const score = document.getElementById('solutionScore').value;
+                
+                if (group && description && score) {
+                    // Find challenge for this group
+                    const groupChallenges = challenges.filter(c => c.group === group);
+                    const challenge = groupChallenges[groupChallenges.length - 1]; // Get the most recent challenge
+                    
+                    if (challenge) {
+                        // Create solution object
+                        const solution = {
+                            group: group,
+                            cse: cseMap[group],
+                            challengeId: challenge.id,
+                            challengeDescription: challenge.description,
+                            description: description,
+                            score: parseInt(score)
+                        };
+                        
+                        // Add to server
+                        await postData(SOLUTIONS_ENDPOINT, solution);
+                        
+                        // Reload data
+                        await loadAllData();
+                        
+                        // Clear form
+                        document.getElementById('solutionGroup').selectedIndex = 0;
+                        document.getElementById('solutionDescription').value = '';
+                        document.getElementById('solutionScore').value = '';
+                    } else {
+                        alert('No challenge found for this group. Please assign a challenge first.');
+                    }
+                } else {
+                    alert('Please select a group, enter a solution description, and provide a score');
+                }
+            });
+            
+            // Download report button
+            document.getElementById('downloadReportBtn').addEventListener('click', function() {
+                generateReport();
+            });
+            
+            // Initialize charts
+            initializeCharts();
+        });
+        
+        // Initialize charts with empty data
+        function initializeCharts() {
+            // Group score chart
+            const groupScoreCtx = document.getElementById('groupScoreChart').getContext('2d');
+            groupScoreChart = new Chart(groupScoreCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(cseMap),
+                    datasets: [{
+                        label: 'Group Score',
+                        data: [0, 0, 0, 0, 0, 0],
+                        backgroundColor: Object.values(groupColors)
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10
+                        }
+                    }
+                }
+            });
+            
+            // Students per group chart
+            const studentsPerGroupCtx = document.getElementById('studentsPerGroupChart').getContext('2d');
+            studentsPerGroupChart = new Chart(studentsPerGroupCtx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(cseMap),
+                    datasets: [{
+                        data: [0, 0, 0, 0, 0, 0],
+                        backgroundColor: Object.values(groupColors)
+                    }]
+                }
+            });
+        }
+        
+        // Function to assign groups automatically (balanced)
+        function assignGroupsAutomatically() {
+            const groupCount = allGroups.length;
+            
+            // Sort students randomly for fair distribution
+            tempStudentData.sort(() => Math.random() - 0.5);
+            
+            // Assign groups evenly
+            tempStudentData.forEach((student, index) => {
+                student.group = allGroups[index % groupCount];
+            });
+        }
+        
+        // Function to assign groups based on criteria
+        function assignGroupsManually(criteria) {
+            if (criteria === 'class') {
+                // Group by class - students in same class go to same group if possible
+                const classes = {};
+                
+                // Count students per class
+                tempStudentData.forEach(student => {
+                    if (!classes[student.class]) {
+                        classes[student.class] = 0;
+                    }
+                    classes[student.class]++;
+                });
+                
+                // Sort classes by size (descending)
+                const sortedClasses = Object.keys(classes).sort((a, b) => classes[b] - classes[a]);
+                
+                // Assign groups by class
+                let currentGroupIndex = 0;
+                
+                sortedClasses.forEach(className => {
+                    const classStudents = tempStudentData.filter(s => s.class === className);
+                    classStudents.forEach(student => {
+                        student.group = allGroups[currentGroupIndex];
+                    });
+                    
+                    // Move to next group
+                    currentGroupIndex = (currentGroupIndex + 1) % allGroups.length;
+                });
+            } else if (criteria === 'admission') {
+                // Group by admission number pattern
+                // This is a simple implementation that groups by the last digit of the admission number
+                tempStudentData.forEach(student => {
+                    // Extract the last character from admission number
+                    const lastChar = student.admissionNumber.slice(-1);
+                    // Convert to a number or use the char code to get a value between 0-5
+                    const value = isNaN(parseInt(lastChar)) ? lastChar.charCodeAt(0) % 6 : parseInt(lastChar) % 6;
+                    student.group = allGroups[value];
+                });
+            }
+        }
+        
+        // Update the group assignment preview table
+        function updateGroupAssignmentTable() {
+            const tableBody = document.querySelector('#groupAssignmentTable tbody');
+            tableBody.innerHTML = '';
+            
+            tempStudentData.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.admissionNumber}</td>
+                    <td>${student.class}</td>
+                    <td>
+                        <select class="form-select form-select-sm" onchange="updateTempStudentGroup(${student.id}, this.value)">
+                            ${allGroups.map(group => `
+                                <option value="${group}" ${student.group === group ? 'selected' : ''}>
+                                    ${group} (${cseMap[group]})
+                                </option>
+                            `).join('')}
+                        </select>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Function to update a temp student's group
+        function updateTempStudentGroup(id, group) {
+            const studentIndex = tempStudentData.findIndex(s => s.id === id);
+            if (studentIndex !== -1) {
+                tempStudentData[studentIndex].group = group;
+            }
+        }
+        
+        // Update the student table
+        function updateStudentTable() {
+            const tableBody = document.querySelector('#studentTable tbody');
+            tableBody.innerHTML = '';
+            
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.admissionNumber || 'N/A'}</td>
+                    <td>${student.class || 'N/A'}</td>
+                    <td>${student.group}</td>
+                    <td>${student.cse}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" onclick="removeStudent(${student.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Update group members lists
+        function updateGroupMembers() {
+            // Clear all groups
+            Object.keys(cseMap).forEach(group => {
+                const groupList = document.getElementById(`${group.toLowerCase()}GroupMembers`);
+                groupList.innerHTML = '';
+            });
+            
+            // Populate with students
+            students.forEach(student => {
+                const groupList = document.getElementById(`${student.group.toLowerCase()}GroupMembers`);
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.textContent = student.name;
+                groupList.appendChild(listItem);
+            });
+        }
+        
+        // Update the challenge table
+        function updateChallengeTable() {
+            const tableBody = document.querySelector('#challengeTable tbody');
+            tableBody.innerHTML = '';
+            
+            challenges.forEach(challenge => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${challenge.group}</td>
+                    <td>${challenge.cse}</td>
+                    <td>${challenge.description}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" onclick="removeChallenge(${challenge.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Update the solution table
+        function updateSolutionTable() {
+            const tableBody = document.querySelector('#solutionTable tbody');
+            tableBody.innerHTML = '';
+            
+            solutions.forEach(solution => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${solution.group}</td>
+                    <td>${solution.cse}</td>
+                    <td>${solution.challengeDescription}</td>
+                    <td>${solution.description}</td>
+                    <td>${solution.score}/10</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" onclick="removeSolution(${solution.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Update report table
+        function updateReportTable() {
+            const tableBody = document.querySelector('#reportChallengeTable tbody');
+            tableBody.innerHTML = '';
+            
+            // Merge challenges and solutions
+            const groups = Object.keys(cseMap);
+            
+            groups.forEach(group => {
+                const challenge = challenges.find(c => c.group === group);
+                const solution = solutions.find(s => s.group === group);
+                
+                if (challenge) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${group}</td>
+                        <td>${cseMap[group]}</td>
+                        <td>${challenge.description}</td>
+                        <td>${solution ? solution.score + '/10' : 'No solution submitted'}</td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+            });
+        }
+        
+        // Update charts with current data
+        function updateCharts() {
+            // Count students per group
+            const studentCounts = {
+                'Green': 0,
+                'Red': 0,
+                'Yellow': 0,
+                'Purple': 0,
+                'Orange': 0,
+                'Blue': 0
+            };
+            
+            students.forEach(student => {
+                studentCounts[student.group]++;
+            });
+            
+            // Get scores per group
+            const scores = {
+                'Green': 0,
+                'Red': 0,
+                'Yellow': 0,
+                'Purple': 0,
+                'Orange': 0,
+                'Blue': 0
+            };
+            
+            solutions.forEach(solution => {
+                scores[solution.group] = solution.score;
+            });
+            
+            // Update charts
+            groupScoreChart.data.datasets[0].data = Object.values(scores);
+            groupScoreChart.update();
+            
+            studentsPerGroupChart.data.datasets[0].data = Object.values(studentCounts);
+            studentsPerGroupChart.update();
+        }
+        
+        // Remove a student
+        async function removeStudent(id) {
+            const confirmed = confirm('Are you sure you want to delete this student?');
+            if (!confirmed) return;
+            
+            const success = await deleteData(`${STUDENTS_ENDPOINT}/${id}`);
+            if (success) {
+                await loadAllData();
+            }
+        }
+        
+        // Remove a challenge
+        async function removeChallenge(id) {
+            const confirmed = confirm('Are you sure you want to delete this challenge? This will also delete associated solutions.');
+            if (!confirmed) return;
+            
+            // First delete associated solutions
+            const relatedSolutions = solutions.filter(s => s.challengeId === id);
+            for (const solution of relatedSolutions) {
+                await deleteData(`${SOLUTIONS_ENDPOINT}/${solution.id}`);
+            }
+            
+            // Then delete the challenge
+            const success = await deleteData(`${CHALLENGES_ENDPOINT}/${id}`);
+            if (success) {
+                await loadAllData();
+            }
+        }
+        
+        // Remove a solution
+        async function removeSolution(id) {
+            const confirmed = confirm('Are you sure you want to delete this solution?');
+            if (!confirmed) return;
+            
+            const success = await deleteData(`${SOLUTIONS_ENDPOINT}/${id}`);
+            if (success) {
+                await loadAllData();
+            }
+        }
+        
+        // Generate and download a report
+        function generateReport() {
+            // Create report content
+            let reportContent = "SAMPLE UWAZI REPORT\n\n";
+            reportContent += "Generated on: " + new Date().toLocaleDateString() + "\n\n";
+            
+            // Group summary
+            reportContent += "GROUP SUMMARY\n";
+            reportContent += "=============\n\n";
+            
+            Object.keys(cseMap).forEach(group => {
+                const groupStudents = students.filter(s => s.group === group);
+                const studentCount = groupStudents.length;
+                const challenge = challenges.find(c => c.group === group);
+                const solution = solutions.find(s => s.group === group);
+                
+                reportContent += `${group} Group (CSE: ${cseMap[group]})\n`;
+                reportContent += `- Students: ${studentCount}\n`;
+                reportContent += `- Challenge: ${challenge ? challenge.description : 'None assigned'}\n`;
+                reportContent += `- Solution: ${solution ? solution.description : 'None submitted'}\n`;
+                reportContent += `- Score: ${solution ? solution.score + '/10' : 'N/A'}\n`;
+                
+                // Add student list for this group
+                if (studentCount > 0) {
+                    reportContent += `- Students in group:\n`;
+                    groupStudents.forEach(student => {
+                        reportContent += `  * ${student.name} (${student.admissionNumber || 'N/A'}, ${student.class || 'N/A'})\n`;
+                    });
+                }
+                reportContent += `\n`;
+            });
+            
+            // Student list
+            reportContent += "\nCOMPLETE STUDENT LIST\n";
+            reportContent += "====================\n\n";
+            
+            students.forEach(student => {
+                reportContent += `${student.name} (${student.admissionNumber || 'N/A'}, ${student.class || 'N/A'}) - ${student.group} Group (CSE: ${student.cse})\n`;
+            });
+            
+            // Performance statistics
+            reportContent += "\nPERFORMANCE STATISTICS\n";
+            reportContent += "======================\n\n";
+            
+            let totalScore = 0;
+            let completedChallenges = 0;
+            
+            solutions.forEach(solution => {
+                totalScore += solution.score;
+                completedChallenges++;
+            });
+            
+            const averageScore = completedChallenges > 0 ? (totalScore / completedChallenges).toFixed(2) : 0;
+            reportContent += `Average Group Score: ${averageScore}/10\n`;
+            reportContent += `Total Groups: ${Object.keys(cseMap).length}\n`;
+            reportContent += `Challenges Completed: ${completedChallenges}/${challenges.length}\n`;
+            reportContent += `Total Students: ${students.length}\n`;
+            
+            // Create and download the text file
+            const blob = new Blob([reportContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'sample_uwazi_report.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

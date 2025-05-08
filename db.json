@@ -1,0 +1,886 @@
+{
+  "students": [
+    {
+      "id": 1746702208291,
+      "name": "Amy Mutuku",
+      "admissionNumber": "7044",
+      "class": "2C",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702209001,
+      "name": "Purity Kanini",
+      "admissionNumber": "6550",
+      "class": "4D",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208970,
+      "name": "Daisy Kanana",
+      "admissionNumber": "7104",
+      "class": "2C",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208092,
+      "name": "Marcelina Mutanu",
+      "admissionNumber": "6589",
+      "class": "4C",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208187,
+      "name": "Emily Muthiani",
+      "admissionNumber": "6922",
+      "class": "3F",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208139,
+      "name": "Maureen Mbithe",
+      "admissionNumber": "7078",
+      "class": "2F",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208227,
+      "name": "Veronica Muthoki",
+      "admissionNumber": "7118",
+      "class": "2F",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208346,
+      "name": "Janiffer Mueni",
+      "admissionNumber": "6556",
+      "class": "4B",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208101,
+      "name": "Brenda Mbithe",
+      "admissionNumber": "6964",
+      "class": "2C",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208822,
+      "name": "Diana Nduku",
+      "admissionNumber": "7195",
+      "class": "2P",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208179,
+      "name": "Samantha Stephen",
+      "admissionNumber": "6490",
+      "class": "4D",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208698,
+      "name": "Keziah Mutheu",
+      "admissionNumber": "6520",
+      "class": "4B",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208685,
+      "name": "Faith Mutheu",
+      "admissionNumber": "6803",
+      "class": "3J",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208414,
+      "name": "Patience Jepchumba",
+      "admissionNumber": "6714",
+      "class": "4B",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208631,
+      "name": "Shalet Ndinda",
+      "admissionNumber": "6477",
+      "class": "4C",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208974,
+      "name": "Maureen Ndanu",
+      "admissionNumber": "6560",
+      "class": "4C",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208809,
+      "name": "Diana Wanja",
+      "admissionNumber": "6608",
+      "class": "4B",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208281,
+      "name": "Salome Mutheu",
+      "admissionNumber": "6663",
+      "class": "4D",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208790,
+      "name": "Doreen Kahunda",
+      "admissionNumber": "6783",
+      "class": "3J",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208873,
+      "name": "Joy Kituku",
+      "admissionNumber": "7101",
+      "class": "2L",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702209002,
+      "name": "Sharleen Mueni",
+      "admissionNumber": "6813",
+      "class": "3P",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208116,
+      "name": "Emily Kioko",
+      "admissionNumber": "6598",
+      "class": "4D",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208029,
+      "name": "Margret Mutongoi",
+      "admissionNumber": "6572",
+      "class": "4B",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208824,
+      "name": "Mitchelle Itumbi",
+      "admissionNumber": "6617",
+      "class": "4C",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208844,
+      "name": "Faith David",
+      "admissionNumber": "6880",
+      "class": "3P",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208048,
+      "name": "Elizabeth Kyalo",
+      "admissionNumber": "6804",
+      "class": "3F",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208482,
+      "name": "Maureen Maundu",
+      "admissionNumber": "6957",
+      "class": "2J",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208493,
+      "name": "Sharon Kemuma",
+      "admissionNumber": "7082",
+      "class": "2J",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208787,
+      "name": "Esther Charles",
+      "admissionNumber": "6827",
+      "class": "3J",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208479,
+      "name": "Josephine Mbithe",
+      "admissionNumber": "6908",
+      "class": "3F",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208648,
+      "name": "Maureen Mueni",
+      "admissionNumber": "7184",
+      "class": "2C",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208063,
+      "name": "Salome Matata",
+      "admissionNumber": "6460",
+      "class": "4B",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208259,
+      "name": "Trizah Ndanu",
+      "admissionNumber": "7241",
+      "class": "3L",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208358,
+      "name": "Josephine Kamene",
+      "admissionNumber": "7229",
+      "class": "3F",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208849,
+      "name": "Yvonne Mwende",
+      "admissionNumber": "6679",
+      "class": "4B",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208489,
+      "name": "Joy Ndinda",
+      "admissionNumber": "7069",
+      "class": "2C",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208874,
+      "name": "Diana Kamene",
+      "admissionNumber": "6847",
+      "class": "3J",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208818,
+      "name": "Karen Kihara",
+      "admissionNumber": "6926",
+      "class": "2L",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208609,
+      "name": "Eunice Mutindi",
+      "admissionNumber": "7166",
+      "class": "2L",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208572,
+      "name": "Franciscar Katheu",
+      "admissionNumber": "6689",
+      "class": "4B",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208844,
+      "name": "Peninah Wanza",
+      "admissionNumber": "7150",
+      "class": "2P",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208589,
+      "name": "Victoria Wawuda",
+      "admissionNumber": "6752",
+      "class": "3J",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208083,
+      "name": "Victoria Mutheu",
+      "admissionNumber": "6588",
+      "class": "4B",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208609,
+      "name": "Susan Ndila",
+      "admissionNumber": "6616",
+      "class": "4B",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208724,
+      "name": "Esther Mumo",
+      "admissionNumber": "7124",
+      "class": "2C",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208916,
+      "name": "Phides Muthoni",
+      "admissionNumber": "6851",
+      "class": "3J",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208243,
+      "name": "Mercy Mwende",
+      "admissionNumber": "6468",
+      "class": "4B",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208310,
+      "name": "Wangui Ngure",
+      "admissionNumber": "6942",
+      "class": "2J",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208914,
+      "name": "Mercy Kaluki",
+      "admissionNumber": "6528",
+      "class": "4B",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208901,
+      "name": "Anneh Mutinda",
+      "admissionNumber": "7168",
+      "class": "4D",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208835,
+      "name": "Ivy Mutheu",
+      "admissionNumber": "6659",
+      "class": "4A",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702209007,
+      "name": "Precious Kemunto",
+      "admissionNumber": "6870",
+      "class": "3L",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208582,
+      "name": "Agnes Syomwana",
+      "admissionNumber": "6884",
+      "class": "3F",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208525,
+      "name": "Grace Ngali",
+      "admissionNumber": "6546",
+      "class": "4D",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208226,
+      "name": "Sharon Daniel",
+      "admissionNumber": "6738",
+      "class": "3P",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208707,
+      "name": "Catherine Wausi",
+      "admissionNumber": "6579",
+      "class": "4A",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208890,
+      "name": "Lilian Matee",
+      "admissionNumber": "6991",
+      "class": "2L",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208688,
+      "name": "Mary Mbeke",
+      "admissionNumber": "6950",
+      "class": "2P",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208782,
+      "name": "Victoria Kyalo",
+      "admissionNumber": "6452",
+      "class": "4B",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208807,
+      "name": "Ann Mutheu",
+      "admissionNumber": "6596",
+      "class": "4B",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208588,
+      "name": "Sharon Wayua",
+      "admissionNumber": "6446",
+      "class": "4D",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208095,
+      "name": "Diana Job",
+      "admissionNumber": "7063",
+      "class": "2F",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208810,
+      "name": "Lucy Mutanu",
+      "admissionNumber": "7192",
+      "class": "2J",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208051,
+      "name": "Oprah Muthoki",
+      "admissionNumber": "6944",
+      "class": "2C",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208613,
+      "name": "Abigael Mutheu",
+      "admissionNumber": "6658",
+      "class": "4D",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208798,
+      "name": "Emily Bahati",
+      "admissionNumber": "6980",
+      "class": "2P",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208130,
+      "name": "Deevoner Gato",
+      "admissionNumber": "6869",
+      "class": "3P",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208214,
+      "name": "Faith Katiwa",
+      "admissionNumber": "6486",
+      "class": "4D",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208368,
+      "name": "Faith Ndanu",
+      "admissionNumber": "6480",
+      "class": "4B",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208975,
+      "name": "Faith Muthina",
+      "admissionNumber": "6814",
+      "class": "3L",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208429,
+      "name": "Edith Mueni",
+      "admissionNumber": "7222",
+      "class": "2J",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208232,
+      "name": "Pauline Mumbua",
+      "admissionNumber": "7125",
+      "class": "2P",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208340,
+      "name": "Mercy Katheo",
+      "admissionNumber": "6943",
+      "class": "2F",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208816,
+      "name": "Sandra Mutave",
+      "admissionNumber": "6879",
+      "class": "3P",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208319,
+      "name": "Cynthia Nthenya",
+      "admissionNumber": "7249",
+      "class": "3J",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208725,
+      "name": "Velma Mutuku",
+      "admissionNumber": "7087",
+      "class": "2J",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208456,
+      "name": "Cynthia Koki",
+      "admissionNumber": "6531",
+      "class": "4A",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208504,
+      "name": "Rachael Peninah",
+      "admissionNumber": "6719",
+      "class": "4C",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208619,
+      "name": "Graca Ouma",
+      "admissionNumber": "6458",
+      "class": "4D",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208193,
+      "name": "Nicole Ambrose",
+      "admissionNumber": "6987",
+      "class": "2J",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208182,
+      "name": "Faith Munguti",
+      "admissionNumber": "6664",
+      "class": "4B",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208923,
+      "name": "Neema Mutheu",
+      "admissionNumber": "7044",
+      "class": "2C",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208957,
+      "name": "Susan Sopiato",
+      "admissionNumber": "7228",
+      "class": "2L",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208493,
+      "name": "Gloria Kakwasi",
+      "admissionNumber": "6743",
+      "class": "3L",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208725,
+      "name": "Agnes Kwekwe",
+      "admissionNumber": "6726",
+      "class": "3P",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208634,
+      "name": "Hope Mumbua",
+      "admissionNumber": "6992",
+      "class": "2J",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208884,
+      "name": "Faith Wamwitha",
+      "admissionNumber": "6704",
+      "class": "4B",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208803,
+      "name": "Mercy Mumo",
+      "admissionNumber": "6590",
+      "class": "4D",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208872,
+      "name": "Esther Munyao",
+      "admissionNumber": "7085",
+      "class": "2P",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208138,
+      "name": "Judy Mutua",
+      "admissionNumber": "7097",
+      "class": "4D",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208175,
+      "name": "Sharon Kamau",
+      "admissionNumber": "7247",
+      "class": "2C",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208373,
+      "name": "Terry Mutheu",
+      "admissionNumber": "7205",
+      "class": "3P",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208669,
+      "name": "Kyla Kimathi",
+      "admissionNumber": "6959",
+      "class": "2C",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208025,
+      "name": "Winfred Munee",
+      "admissionNumber": "7182",
+      "class": "2J",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208241,
+      "name": "Mercy Mumo",
+      "admissionNumber": "6785",
+      "class": "3P",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208256,
+      "name": "Linet Mutheu",
+      "admissionNumber": "6963",
+      "class": "2F",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208815,
+      "name": "Faith Kanuku",
+      "admissionNumber": "7019",
+      "class": "2C",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208200,
+      "name": "Joan Cherotich",
+      "admissionNumber": "7181",
+      "class": "2L",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208170,
+      "name": "Gloria Mbatha",
+      "admissionNumber": "6474",
+      "class": "4D",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208835,
+      "name": "Faith Mueni",
+      "admissionNumber": "6836",
+      "class": "3F",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208268,
+      "name": "Marion Haron",
+      "admissionNumber": "6628",
+      "class": "4B",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208571,
+      "name": "Maureen Kanini",
+      "admissionNumber": "6941",
+      "class": "2L",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208775,
+      "name": "Joy Mutheu",
+      "admissionNumber": "6456",
+      "class": "4B",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": 1746702208782,
+      "name": "Christine Nduleve",
+      "admissionNumber": "6765",
+      "class": "3F",
+      "group": "Yellow",
+      "cse": "Frank"
+    },
+    {
+      "id": 1746702208455,
+      "name": "Mwanamisi Mulongo",
+      "admissionNumber": "6937",
+      "class": "2J",
+      "group": "Purple",
+      "cse": "Ng'ang'a"
+    },
+    {
+      "id": 1746702208818,
+      "name": "Peace Nzyulo",
+      "admissionNumber": "6652",
+      "class": "4B",
+      "group": "Orange",
+      "cse": "Jenny"
+    },
+    {
+      "id": 1746702208424,
+      "name": "Cynthia Mwelu",
+      "admissionNumber": "7243",
+      "class": "2C",
+      "group": "Blue",
+      "cse": "Joan"
+    },
+    {
+      "id": 1746702208765,
+      "name": "Elizabeth Katunge",
+      "admissionNumber": "6606",
+      "class": "4D",
+      "group": "Green",
+      "cse": "Sophie"
+    },
+    {
+      "id": 1746702208547,
+      "name": "Teresah Wagechi",
+      "admissionNumber": "7187",
+      "class": "2J",
+      "group": "Red",
+      "cse": "Waka"
+    },
+    {
+      "id": "c6b1",
+      "name": "Branice Nanjala",
+      "admissionNumber": "7151",
+      "class": "2L",
+      "group": "Blue",
+      "cse": "Joan"
+    }
+  ],
+  "challenges": [],
+  "solutions": []
+}
