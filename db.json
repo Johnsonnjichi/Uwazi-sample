@@ -881,6 +881,98 @@
       "cse": "Joan"
     }
   ],
-  "challenges": [],
-  "solutions": []
+  "challenges": [
+    {
+      "id": "d05d",
+      "group": "Purple",
+      "cse": "Ng'ang'a",
+      "description": "Peer pressure"
+    },
+    {
+      "id": "23c0",
+      "group": "Orange",
+      "cse": "Jenny",
+      "description": "Pollution-batteries"
+    },
+    {
+      "id": "319f",
+      "group": "Green",
+      "cse": "Sophie",
+      "description": "Debate"
+    },
+    {
+      "id": "a1de",
+      "group": "Blue",
+      "cse": "Joan",
+      "description": "Food shortage"
+    },
+    {
+      "id": "623e",
+      "group": "Red",
+      "cse": "Waka",
+      "description": "Social interaction on social media- exposes people to dangers"
+    },
+    {
+      "id": "3617",
+      "group": "Yellow",
+      "cse": "Frank",
+      "description": "Environmental pollution"
+    }
+  ],
+  "solutions": [
+    {
+      "id": "645a",
+      "group": "Orange",
+      "cse": "Jenny",
+      "challengeId": "23c0",
+      "challengeDescription": "Pollution-batteries",
+      "description": "recycling",
+      "score": 10
+    },
+    {
+      "id": "aab2",
+      "group": "Blue",
+      "cse": "Joan",
+      "challengeId": "a1de",
+      "challengeDescription": "Food shortage",
+      "description": "1. eliminate corrupt leaders\n2. new forms of farming",
+      "score": 10
+    },
+    {
+      "id": "c3ad",
+      "group": "Red",
+      "cse": "Waka",
+      "challengeId": "623e",
+      "challengeDescription": "Social interaction on social media- exposes people to dangers",
+      "description": "Device control eg \ntime restriction",
+      "score": 0
+    },
+    {
+      "id": "a9c4",
+      "group": "Yellow",
+      "cse": "Frank",
+      "challengeId": "3617",
+      "challengeDescription": "Environmental pollution",
+      "description": "Sensors to detect pollutions\nintroduction of fines \ngive info using language inclusion \nUse of satellites to identify pollution problems\nUse media to create awareness\nUse design thinking to come up with innovative solutions\nValue addition to trash",
+      "score": 10
+    },
+    {
+      "id": "ebf5",
+      "group": "Purple",
+      "cse": "Ng'ang'a",
+      "challengeId": "d05d",
+      "challengeDescription": "Peer pressure",
+      "description": "Take up Hobbies to offset stress",
+      "score": 10
+    },
+    {
+      "id": "0ed0",
+      "group": "Green",
+      "cse": "Sophie",
+      "challengeId": "319f",
+      "challengeDescription": "Debate",
+      "description": "Journaling",
+      "score": 10
+    }
+  ]
 }
